@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CV — Carlos Muñoz Carrasco · Senior Data Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#f4f5fa;--bg2:#eceef6;--surface:#ffffff;--surface2:#f0f1f8;
+  --border:rgba(35,10,80,0.09);--borderH:rgba(35,10,80,0.20);
+  --accent:#280F5C;--accentL:#3d1a80;--accentT:#0C8A7A;--accentTL:#0fb39e;
+  --accentDim:rgba(40,15,92,0.08);--tealDim:rgba(12,138,122,0.10);
+  --text:#0e0820;--textM:#6e7088;--textD:#2e2050;
+  --shadow:0 4px 24px rgba(40,15,92,0.08);
+  --font-d:'Syne',sans-serif;--font-b:'DM Sans',sans-serif;--font-m:'DM Mono',monospace;
+}
+[data-theme="dark"]{
+  --bg:#070a12;--bg2:#0d1120;--surface:#0d1120;--surface2:#141a2c;
+  --border:rgba(120,90,255,0.12);--borderH:rgba(120,90,255,0.28);
+  --accent:#9870f0;--accentL:#b898ff;--accentT:#22c4ae;--accentTL:#5dd8c8;
+  --accentDim:rgba(152,112,240,0.12);--tealDim:rgba(34,196,174,0.10);
+  --text:#e2e8f5;--textM:#6e7080;--textD:#9aaabb;
+  --shadow:0 4px 24px rgba(0,0,0,0.30);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s;}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,var(--borderH) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0;opacity:.4;}
+
+.accent-bar{height:3px;background:linear-gradient(90deg,var(--accent) 55%,var(--accentT) 55%);position:fixed;top:0;left:0;right:0;z-index:300;}
+
+nav{position:fixed;top:3px;left:0;right:0;z-index:200;padding:15px 48px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);backdrop-filter:blur(20px);}
+[data-theme="light"] nav{background:rgba(244,245,250,0.90);}
+[data-theme="dark"]  nav{background:rgba(7,10,18,0.90);}
+
+.nav-logo{font-family:var(--font-d);font-weight:800;font-size:19px;letter-spacing:-.03em;text-decoration:none;}
+.nav-logo .cm{color:var(--accent);}
+.nav-logo .dev{color:var(--textM);font-weight:400;}
+
+.nav-r{display:flex;align-items:center;gap:12px;}
+.back-link{font-family:var(--font-m);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--textM);text-decoration:none;border:1px solid var(--borderH);padding:7px 16px;border-radius:6px;transition:all .2s;}
+.back-link:hover{border-color:var(--accent);color:var(--accent);}
+.dl-btn{font-family:var(--font-m);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--accentT);padding:7px 16px;border-radius:6px;text-decoration:none;transition:background .2s;}
+.dl-btn:hover{background:var(--accentTL);}
+.theme-toggle{width:34px;height:34px;border-radius:50%;border:1px solid var(--borderH);background:var(--surface2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;}
+
+section{position:relative;z-index:1;}
+.container{max-width:960px;margin:0 auto;padding:0 48px;}
+
+/* CV HEADER */
+#cvhero{padding:100px 0 60px;border-bottom:1px solid var(--border);}
+.cv-hero-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;}
+.cv-name{font-family:var(--font-d);font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-.03em;color:var(--text);margin-bottom:8px;}
+.cv-title{font-family:var(--font-m);font-size:13px;color:var(--accentT);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;}
+.cv-summary{font-size:15px;color:var(--textD);line-height:1.8;max-width:580px;font-weight:300;}
+.cv-summary strong{color:var(--text);font-weight:500;}
+
+.cv-meta{display:flex;flex-direction:column;gap:8px;align-items:flex-end;}
+.cv-meta-item{font-family:var(--font-m);font-size:11px;color:var(--textM);display:flex;align-items:center;gap:6px;}
+.cv-meta-item a{color:var(--accentT);text-decoration:none;}
+.cv-meta-item a:hover{text-decoration:underline;}
+.cv-badge{font-family:var(--font-m);font-size:10px;padding:3px 10px;border-radius:100px;background:var(--accentDim);color:var(--accent);border:1px solid var(--borderH);margin-top:8px;}
+
+/* SECTIONS */
+.cv-section{padding:60px 0;border-bottom:1px solid var(--border);}
+.sec-label{font-family:var(--font-m);font-size:11px;color:var(--accentT);text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:'';width:20px;height:2px;background:var(--accentT);border-radius:2px;}
+h2{font-family:var(--font-d);font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text);line-height:1.1;letter-spacing:-.02em;margin-bottom:36px;}
+
+/* EXPERIENCE */
+.exp-list{display:flex;flex-direction:column;gap:0;}
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:28px 0;border-top:1px solid var(--border);}
+.exp-item:first-child{border-top:none;padding-top:0;}
+
+.exp-left{}
+.exp-period{font-family:var(--font-m);font-size:11px;color:var(--accentT);letter-spacing:.06em;margin-bottom:6px;}
+.exp-co{font-family:var(--font-m);font-size:11px;color:var(--textM);line-height:1.4;}
+.exp-badge{display:inline-block;font-family:var(--font-m);font-size:9px;padding:2px 8px;border-radius:100px;background:var(--accentDim);color:var(--accent);border:1px solid var(--borderH);margin-top:8px;}
+.exp-badge.teal{background:var(--tealDim);color:var(--accentT);border-color:rgba(12,138,122,.25);}
+
+.exp-right{}
+.exp-role{font-family:var(--font-d);font-size:18px;font-weight:700;color:var(--text);margin-bottom:14px;letter-spacing:-.015em;}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.exp-bullets li{font-size:14px;color:var(--textD);padding-left:16px;position:relative;line-height:1.6;}
+.exp-bullets li::before{content:'›';position:absolute;left:0;color:var(--accentT);font-size:16px;line-height:1.3;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.exp-tag{font-family:var(--font-m);font-size:9px;padding:2px 9px;border-radius:100px;background:var(--surface2);border:1px solid var(--border);color:var(--textM);}
+
+/* STACK */
+.stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.stack-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;transition:border-color .2s;}
+.stack-card:hover{border-color:var(--borderH);}
+.stack-cat{font-family:var(--font-m);font-size:10px;text-transform:uppercase;letter-spacing:.10em;color:var(--accentT);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.stack-items{display:flex;flex-direction:column;gap:8px;}
+.stack-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--textD);}
+.stack-dot{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;}
+.stack-item.hi .stack-dot{background:var(--accent);}
+.stack-item.hi{color:var(--textD);font-weight:500;}
+.stack-item.med .stack-dot{background:var(--accentT);}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.cert-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:12px;transition:border-color .2s;}
+.cert-card:hover{border-color:var(--borderH);}
+.cert-badge{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.cert-name{font-family:var(--font-d);font-size:12px;font-weight:700;color:var(--text);line-height:1.3;}
+.cert-issuer{font-family:var(--font-m);font-size:10px;color:var(--textM);margin-top:2px;}
+
+/* EDUCATION */
+.edu-item{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:24px 0;border-top:1px solid var(--border);}
+.edu-item:first-child{border-top:none;padding-top:0;}
+.edu-year{font-family:var(--font-m);font-size:11px;color:var(--accentT);}
+.edu-inst{font-family:var(--font-m);font-size:11px;color:var(--textM);}
+.edu-title{font-family:var(--font-d);font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.edu-spec{font-size:13px;color:var(--textD);}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.skill-group{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;}
+.skill-group-title{font-family:var(--font-d);font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.skill-tag{font-family:var(--font-m);font-size:11px;padding:4px 12px;border-radius:100px;background:var(--surface2);border:1px solid var(--border);color:var(--textD);}
+
+/* LANGUAGES */
+.lang-row{display:flex;gap:16px;flex-wrap:wrap;}
+.lang-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 22px;display:flex;align-items:center;gap:12px;}
+.lang-flag{font-size:20px;}
+.lang-name{font-family:var(--font-d);font-weight:700;font-size:14px;color:var(--text);}
+.lang-level{font-family:var(--font-m);font-size:10px;color:var(--textM);}
+
+/* REFS */
+.refs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;}
+.ref-name{font-family:var(--font-d);font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.ref-role{font-size:12px;color:var(--textD);margin-bottom:8px;}
+.ref-tel{font-family:var(--font-m);font-size:11px;color:var(--accentT);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+footer{border-top:1px solid var(--border);padding:22px 48px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;background:var(--bg2);}
+.f-logo{font-family:var(--font-d);font-weight:800;font-size:15px;letter-spacing:-.02em;}
+.f-logo .cm{color:var(--accent);}
+.f-logo .dev{color:var(--textM);font-weight:400;}
+.f-copy{font-family:var(--font-m);font-size:11px;color:var(--textM);}
+.f-back{font-family:var(--font-m);font-size:11px;color:var(--accentT);text-decoration:none;}
+.f-back:hover{text-decoration:underline;}
+
+@media(max-width:860px){
+  nav{padding:13px 20px;}
+  .container{padding:0 20px;}
+  .cv-hero-grid{grid-template-columns:1fr;}
+  .cv-meta{align-items:flex-start;}
+  .exp-item,.edu-item{grid-template-columns:1fr;gap:8px;}
+  .stack-grid{grid-template-columns:1fr 1fr;}
+  .certs-grid{grid-template-columns:1fr 1fr;}
+  .refs-grid{grid-template-columns:1fr;}
+  .skills-grid{grid-template-columns:1fr;}
+  footer{padding:18px 20px;flex-direction:column;gap:6px;text-align:center;}
+}
+@media(max-width:560px){
+  .stack-grid,.certs-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="accent-bar"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo"><span class="cm">CM</span><span class="dev">Dev</span></a>
+  <div class="nav-r">
+    <a href="index.html" class="back-link">← Portafolio</a>
+    <a href="mailto:carlos.s.m.carrasco@gmail.com" class="dl-btn">Solicitar CV →</a>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+  </div>
+</nav>
+
+<!-- CV HEADER -->
+<section id="cvhero">
+  <div class="container">
+    <div class="cv-hero-grid reveal">
+      <div>
+        <div class="cv-name">Carlos Muñoz<br/>Carrasco</div>
+        <div class="cv-title">Senior Data Consultant · AI & BI Specialist</div>
+        <p class="cv-summary">
+          Consultor senior con más de 3 años de experiencia en soluciones de inteligencia empresarial,
+          análisis predictivo e ingeniería de datos. Especializado en la <strong>gestión integral de proyectos</strong>
+          para clientes de diversas industrias, combinando alto estándar técnico con visión de negocio
+          y sólidas habilidades de comunicación ejecutiva.
+        </p>
+      </div>
+      <div class="cv-meta">
+        <div class="cv-meta-item">📧 <a href="mailto:carlos.s.m.carrasco@gmail.com">carlos.s.m.carrasco@gmail.com</a></div>
+        <div class="cv-meta-item">📱 +56 9 5730 3196</div>
+        <div class="cv-meta-item">🔗 <a href="https://www.linkedin.com/in/carlosmunozc/" target="_blank">linkedin.com/in/carlosmunozc</a></div>
+        <div class="cv-meta-item">🐙 <a href="https://github.com/Peppa-Coder" target="_blank">github.com/Peppa-Coder</a></div>
+        <div class="cv-meta-item">📍 Santiago, Chile</div>
+        <div class="cv-badge">Disponible para proyectos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section class="cv-section">
+  <div class="container">
+    <div class="sec-label">Experiencia</div>
+    <h2>Trayectoria profesional</h2>
+
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-left">
+          <div class="exp-period">2025 — Actual</div>
+          <div class="exp-co">Consultoría Big 4<br/>Financial Services (FSO)</div>
+          <span class="exp-badge">Posición actual</span>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Senior Consultant – AI & Data</div>
+          <ul class="exp-bullets">
+            <li>Desarrollo de dashboards ejecutivos para Subgerencia Comercial de banca, habilitando seguimiento de campañas de marketing en tiempo real.</li>
+            <li>Modelado predictivo de propensión de clientes y análisis pre/post campaña para optimización de inversión comercial.</li>
+            <li>Implementación de procesos de ingeniería de datos con AWS (Athena, S3, Glue, Redshift) alimentando Salesforce Marketing Cloud.</li>
+            <li>Asumí operaciones de Salesforce MC garantizando continuidad ante cambio de equipo, sin interrupciones en campañas activas.</li>
+            <li>Supervisión y coordinación de actividades críticas del proyecto asegurando cumplimiento de plazos.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">AWS Athena</span><span class="exp-tag">S3</span><span class="exp-tag">Glue</span>
+            <span class="exp-tag">Redshift</span><span class="exp-tag">Salesforce MC</span>
+            <span class="exp-tag">Python</span><span class="exp-tag">SQL</span><span class="exp-tag">Data Science</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal" style="transition-delay:.08s">
+        <div class="exp-left">
+          <div class="exp-period">2024 — 2025</div>
+          <div class="exp-co">Consultoría Big 4<br/>Management Consulting (Advisory)</div>
+          <span class="exp-badge teal">Transformación digital</span>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Senior Consultant – Digital Transformation</div>
+          <ul class="exp-bullets">
+            <li>Proyectos de inteligencia empresarial e ingeniería de datos mejorando disponibilidad, calidad y análisis para decisiones gerenciales.</li>
+            <li>Auditorías especializadas en Ciberseguridad, Privacidad de Datos, uso de Inteligencia Artificial y Gobernanza.</li>
+            <li>Charlas internas sobre IA y DLP para todo el área de Advisory, impulsando adopción de innovación y oportunidades de negocio.</li>
+            <li>Colaboración en el diseño de soluciones para propuestas comerciales con altos estándares de calidad.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Power BI</span><span class="exp-tag">Data Governance</span>
+            <span class="exp-tag">AI Audit</span><span class="exp-tag">Ciberseguridad</span><span class="exp-tag">GRC</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal" style="transition-delay:.12s">
+        <div class="exp-left">
+          <div class="exp-period">2023 — 2024</div>
+          <div class="exp-co">Consultoría de datos<br/>Pyme especializada</div>
+          <span class="exp-badge">Project Leader</span>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Senior BI Consultant & Project Leader</div>
+          <ul class="exp-bullets">
+            <li>Actor clave en relación con socio estratégico de datos de consumo masivo, actuando como punto de escalación principal.</li>
+            <li>Líder de múltiples proyectos de BI y Transformación Digital de principio a fin, gestionando recursos y plazos.</li>
+            <li>Participación en reuniones gerenciales, kick-off y sesiones de planificación estratégica con alta dirección del cliente.</li>
+            <li>Desarrollo de arquitecturas Big Data, modelos ETL/ELT complejos y orquestaciones para entornos de producción.</li>
+            <li>Creación de manuales, políticas y buenas prácticas de desarrollo BI incorporadas al proceso de inducción.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Power BI</span><span class="exp-tag">BigQuery</span>
+            <span class="exp-tag">Dagster</span><span class="exp-tag">ETL/ELT</span>
+            <span class="exp-tag">Looker Studio</span><span class="exp-tag">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal" style="transition-delay:.16s">
+        <div class="exp-left">
+          <div class="exp-period">2023 — 2024</div>
+          <div class="exp-co">Independiente · Remoto</div>
+          <span class="exp-badge teal">Freelance</span>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Senior BI Developer</div>
+          <ul class="exp-bullets">
+            <li>Proyectos autónomos de inteligencia empresarial como experto referente — optimización, UX y QA de soluciones.</li>
+            <li>Capacitaciones técnicas a equipos de desarrollo de clientes.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Power BI</span><span class="exp-tag">QA</span><span class="exp-tag">Capacitación</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal" style="transition-delay:.20s">
+        <div class="exp-left">
+          <div class="exp-period">2022 — 2023</div>
+          <div class="exp-co">Consultoría de datos<br/>Primer empleo</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Junior Business Intelligence Developer</div>
+          <ul class="exp-bullets">
+            <li>Asumí proyectos a medio terminar, entregando en plazo y superando expectativas del cliente.</li>
+            <li>Desarrollé un producto de BI interno que se convirtió en oferta comercial para nuevos clientes.</li>
+            <li>Instauré control de versiones y documentación exhaustiva como estándar del equipo.</li>
+            <li>Participación en reuniones estratégicas con alta gerencia presentando avances semanales.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Power BI</span><span class="exp-tag">SQL</span><span class="exp-tag">Git</span><span class="exp-tag">DAX</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="cv-section">
+  <div class="container">
+    <div class="sec-label">Stack tecnológico</div>
+    <h2>Herramientas y tecnologías</h2>
+    <div class="stack-grid">
+      <div class="stack-card reveal">
+        <div class="stack-cat">☁️ Microsoft Azure</div>
+        <div class="stack-items">
+          <div class="stack-item hi"><div class="stack-dot"></div>Power BI</div>
+          <div class="stack-item hi"><div class="stack-dot"></div>Azure Data Factory</div>
+          <div class="stack-item hi"><div class="stack-dot"></div>Azure Synapse</div>
+          <div class="stack-item med"><div class="stack-dot"></div>Power Apps / Automate</div>
+          <div class="stack-item"><div class="stack-dot"></div>Azure Data Lake</div>
+          <div class="stack-item"><div class="stack-dot"></div>Microsoft Fabric</div>
+        </div>
+      </div>
+      <div class="stack-card reveal" style="transition-delay:.08s">
+        <div class="stack-cat">☁️ AWS</div>
+        <div class="stack-items">
+          <div class="stack-item hi"><div class="stack-dot"></div>Athena</div>
+          <div class="stack-item hi"><div class="stack-dot"></div>S3 + Glue</div>
+          <div class="stack-item hi"><div class="stack-dot"></div>Redshift</div>
+          <div class="stack-item med"><div class="stack-dot"></div>Step Functions</div>
+          <div class="stack-item"><div class="stack-dot"></div>EventBridge</div>
+        </div>
+      </div>
+      <div class="stack-card reveal" style="transition-delay:.12s">
+        <div class="stack-cat">☁️ Google Cloud</div>
+        <div class="stack-items">
+          <div class="stack-item hi"><div class="stack-dot"></div>BigQuery</div>
+          <div class="stack-item hi"><div class="stack-dot"></div>Looker Studio</div>
+          <div class="stack-item med"><div class="stack-dot"></div>Cloud Storage</div>
+          <div class="stack-item"><div class="stack-dot"></div>Cloud Functions</div>
+          <div class="stack-item"><div class="stack-dot"></div>Dataform</div>
+        </div>
+      </div>
+      <div class="stack-card reveal">
+        <div class="stack-cat">💻 Lenguajes</div>
+        <div class="stack-items">
+          <div class="stack-item hi"><div class="stack-dot"></div>Python</div>
+          <div class="stack-item hi"><div class="stack-dot"></div>SQL / T-SQL / SQLX</div>
+          <div class="stack-item hi"><div class="stack-dot"></div>DAX / M</div>
+          <div class="stack-item med"><div class="stack-dot"></div>Node.js / Next.js</div>
+        </div>
+      </div>
+      <div class="stack-card reveal" style="transition-delay:.08s">
+        <div class="stack-cat">🔄 Orquestación & ETL</div>
+        <div class="stack-items">
+          <div class="stack-item hi"><div class="stack-dot"></div>Dagster</div>
+          <div class="stack-item hi"><div class="stack-dot"></div>MAGE.AI</div>
+          <div class="stack-item med"><div class="stack-dot"></div>Data Factory</div>
+          <div class="stack-item"><div class="stack-dot"></div>Salesforce Marketing Cloud</div>
+        </div>
+      </div>
+      <div class="stack-card reveal" style="transition-delay:.12s">
+        <div class="stack-cat">🗄️ Bases de datos</div>
+        <div class="stack-items">
+          <div class="stack-item hi"><div class="stack-dot"></div>SQL Server</div>
+          <div class="stack-item hi"><div class="stack-dot"></div>PostgreSQL</div>
+          <div class="stack-item med"><div class="stack-dot"></div>MySQL</div>
+          <div class="stack-item"><div class="stack-dot"></div>SAP / Softland</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICACIONES -->
+<section class="cv-section">
+  <div class="container">
+    <div class="sec-label">Certificaciones</div>
+    <h2>Credenciales</h2>
+    <div class="certs-grid">
+      <div class="cert-card reveal"><div class="cert-badge" style="background:rgba(0,102,255,.10)">☁️</div><div><div class="cert-name">Azure Data Fundamentals</div><div class="cert-issuer">Microsoft · DP-900</div></div></div>
+      <div class="cert-card reveal" style="transition-delay:.05s"><div class="cert-badge" style="background:rgba(0,102,255,.10)">🏗️</div><div><div class="cert-name">Fabric Data Engineer Associate</div><div class="cert-issuer">Microsoft · DP-700</div></div></div>
+      <div class="cert-card reveal" style="transition-delay:.10s"><div class="cert-badge" style="background:rgba(255,60,0,.10)">🔥</div><div><div class="cert-name">Gen AI Fundamentals</div><div class="cert-issuer">Databricks</div></div></div>
+      <div class="cert-card reveal" style="transition-delay:.15s"><div class="cert-badge" style="background:rgba(255,60,0,.10)">🤖</div><div><div class="cert-name">Gen AI Engineer Associate</div><div class="cert-issuer">Databricks</div></div></div>
+      <div class="cert-card reveal" style="transition-delay:.20s"><div class="cert-badge" style="background:var(--accentDim)">🔐</div><div><div class="cert-name">Securiti Fundamentals</div><div class="cert-issuer">Securiti</div></div></div>
+      <div class="cert-card reveal" style="transition-delay:.25s"><div class="cert-badge" style="background:var(--accentDim)">🛡️</div><div><div class="cert-name">Securiti Advanced</div><div class="cert-issuer">Securiti</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCACIÓN -->
+<section class="cv-section">
+  <div class="container">
+    <div class="sec-label">Educación</div>
+    <h2>Formación académica</h2>
+    <div class="edu-item reveal">
+      <div>
+        <div class="edu-year">2020 — 2023</div>
+        <div class="edu-inst">Duoc UC</div>
+      </div>
+      <div>
+        <div class="edu-title">Ingeniería en Informática</div>
+        <div class="edu-spec">Especialización en Ciencia de Datos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section class="cv-section">
+  <div class="container">
+    <div class="sec-label">Habilidades</div>
+    <h2>Competencias clave</h2>
+    <div class="skills-grid reveal">
+      <div class="skill-group">
+        <div class="skill-group-title">Gestión y liderazgo</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Gestión de proyectos</span>
+          <span class="skill-tag">Liderazgo de equipos</span>
+          <span class="skill-tag">Gestión del tiempo</span>
+          <span class="skill-tag">Priorización</span>
+          <span class="skill-tag">Toma de decisiones</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Negocio y consultoría</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Visión de negocio</span>
+          <span class="skill-tag">Comunicación ejecutiva</span>
+          <span class="skill-tag">Gestión de expectativas</span>
+          <span class="skill-tag">Pensamiento analítico</span>
+          <span class="skill-tag">Resolución de problemas</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Técnicas</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Modelado de datos</span>
+          <span class="skill-tag">ETL/ELT</span>
+          <span class="skill-tag">Análisis predictivo</span>
+          <span class="skill-tag">Data Governance</span>
+          <span class="skill-tag">Arquitectura Big Data</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Soft skills</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Adaptabilidad</span>
+          <span class="skill-tag">Proactividad</span>
+          <span class="skill-tag">Atención al detalle</span>
+          <span class="skill-tag">Trabajo en equipo</span>
+          <span class="skill-tag">Mejora continua</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IDIOMAS -->
+<section class="cv-section">
+  <div class="container">
+    <div class="sec-label">Idiomas</div>
+    <h2>Comunicación</h2>
+    <div class="lang-row reveal">
+      <div class="lang-card"><div class="lang-flag">🇨🇱</div><div><div class="lang-name">Español</div><div class="lang-level">Nativo</div></div></div>
+      <div class="lang-card"><div class="lang-flag">🇺🇸</div><div><div class="lang-name">Inglés</div><div class="lang-level">B1 — Intermedio · Fortaleza en lectura</div></div></div>
+      <div class="lang-card"><div class="lang-flag">🇧🇷</div><div><div class="lang-name">Portugués</div><div class="lang-level">A2 — Básico</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCIAS -->
+<section class="cv-section" style="border-bottom:none;">
+  <div class="container">
+    <div class="sec-label">Referencias</div>
+    <h2>Contactos profesionales</h2>
+    <div class="refs-grid reveal">
+      <div class="ref-card">
+        <div class="ref-name">Yoislender Martinez</div>
+        <div class="ref-role">Senior Manager · Consultoría Big 4</div>
+        <div class="ref-tel">+56 9 67858187</div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-name">Marcos Waltemath</div>
+        <div class="ref-role">Chief Technology Officer</div>
+        <div class="ref-tel">+56 9 9699 2526</div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-name">Mario Demarchi</div>
+        <div class="ref-role">Head of Projects</div>
+        <div class="ref-tel">+56 9 9221 0809</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><span class="cm">CM</span><span class="dev">Dev</span></div>
+  <div class="f-copy">© 2025 Carlos Muñoz Carrasco</div>
+  <a href="index.html" class="f-back">← Volver al portafolio</a>
+</footer>
+
+<script>
+function toggleTheme(){
+  const html=document.documentElement;
+  const isDark=html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme',isDark?'light':'dark');
+  document.getElementById('themeBtn').textContent=isDark?'🌙':'☀️';
+  localStorage.setItem('theme',isDark?'light':'dark');
+}
+(function(){
+  const t=localStorage.getItem('theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  document.addEventListener('DOMContentLoaded',()=>{
+    document.getElementById('themeBtn').textContent=t==='dark'?'☀️':'🌙';
+  });
+})();
+
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  });
+},{threshold:0.08});
+reveals.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

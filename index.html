@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CMDev — Carlos Muñoz · Senior Data Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:        #f4f5fa;
+  --bg2:       #eceef6;
+  --surface:   #ffffff;
+  --surface2:  #f0f1f8;
+  --border:    rgba(35,10,80,0.09);
+  --borderH:   rgba(35,10,80,0.20);
+  --accent:    #280F5C;
+  --accentL:   #3d1a80;
+  --accentT:   #0C8A7A;
+  --accentTL:  #0fb39e;
+  --accentDim: rgba(40,15,92,0.08);
+  --tealDim:   rgba(12,138,122,0.10);
+  --text:      #0e0820;
+  --textM:     #6e7088;
+  --textD:     #2e2050;
+  --shadow:    0 4px 24px rgba(40,15,92,0.08);
+  --font-d:    'Syne', sans-serif;
+  --font-b:    'DM Sans', sans-serif;
+  --font-m:    'DM Mono', monospace;
+}
+[data-theme="dark"] {
+  --bg:        #070a12;
+  --bg2:       #0d1120;
+  --surface:   #0d1120;
+  --surface2:  #141a2c;
+  --border:    rgba(120,90,255,0.12);
+  --borderH:   rgba(120,90,255,0.28);
+  --accent:    #9870f0;
+  --accentL:   #b898ff;
+  --accentT:   #22c4ae;
+  --accentTL:  #5dd8c8;
+  --accentDim: rgba(152,112,240,0.12);
+  --tealDim:   rgba(34,196,174,0.10);
+  --text:      #e2e8f5;
+  --textM:     #6e7080;
+  --textD:     #9aaabb;
+  --shadow:    0 4px 24px rgba(0,0,0,0.30);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s;}
+
+/* DOT GRID */
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,var(--borderH) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0;opacity:.5;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 48px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);background:rgba(var(--bg),0);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+[data-theme="light"] nav{background:rgba(244,245,250,0.90);}
+[data-theme="dark"]  nav{background:rgba(7,10,18,0.90);}
+
+.nav-logo{font-family:var(--font-d);font-weight:800;font-size:20px;letter-spacing:-.03em;text-decoration:none;display:flex;align-items:baseline;gap:0;}
+.nav-logo .cm{color:var(--accent);}
+.nav-logo .dev{color:var(--textM);font-weight:400;}
+
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+.nav-links a{font-family:var(--font-m);font-size:11px;color:var(--textM);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent)!important;color:#fff!important;padding:8px 20px!important;border-radius:6px!important;}
+.nav-cta:hover{background:var(--accentL)!important;color:#fff!important;}
+
+.nav-right{display:flex;align-items:center;gap:16px;}
+.cv-link{font-family:var(--font-m);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accentT);text-decoration:none;border:1px solid var(--accentT);padding:7px 16px;border-radius:6px;transition:all .2s;}
+.cv-link:hover{background:var(--accentT);color:#fff;}
+
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--borderH);background:var(--surface2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s;}
+.theme-toggle:hover{border-color:var(--accent);}
+
+/* SECTIONS */
+section{position:relative;z-index:1;}
+.container{max-width:1120px;margin:0 auto;padding:0 48px;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:100px 0 60px;}
+.hero-grid{display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:center;width:100%;}
+
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);background:var(--accentDim);border:1px solid var(--borderH);padding:5px 14px;border-radius:100px;margin-bottom:20px;}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--accentT);animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.5)}}
+
+h1{font-family:var(--font-d);font-weight:800;font-size:clamp(38px,5vw,60px);line-height:1.04;letter-spacing:-.03em;color:var(--text);margin-bottom:24px;}
+h1 em{font-style:normal;color:var(--accent);}
+h1 .teal{color:var(--accentT);}
+
+.hero-sub{font-size:17px;color:var(--textD);max-width:480px;line-height:1.75;margin-bottom:36px;font-weight:300;}
+.hero-sub strong{color:var(--text);font-weight:500;}
+
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px;}
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:var(--font-d);font-weight:700;font-size:14px;padding:13px 26px;border-radius:6px;text-decoration:none;transition:background .2s,transform .2s;box-shadow:0 4px 16px rgba(40,15,92,0.20);}
+.btn-p:hover{background:var(--accentL);transform:translateY(-2px);}
+.btn-g{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--borderH);color:var(--textD);font-family:var(--font-d);font-weight:600;font-size:14px;padding:13px 26px;border-radius:6px;text-decoration:none;background:var(--surface);transition:border-color .2s,color .2s;}
+.btn-g:hover{border-color:var(--accentT);color:var(--accentT);}
+
+.hero-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.htag{font-family:var(--font-m);font-size:10px;padding:3px 10px;border-radius:100px;background:var(--tealDim);color:var(--accentT);border:1px solid rgba(12,138,122,0.25);}
+
+/* HERO CARD */
+.hero-card{background:var(--surface);border:1px solid var(--borderH);border-radius:16px;padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.hero-card::after{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,var(--accentDim) 0%,transparent 70%);pointer-events:none;}
+
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;}
+.stat{padding:16px;background:var(--surface2);border-radius:10px;border:1px solid var(--border);}
+.stat-n{font-family:var(--font-d);font-size:28px;font-weight:800;color:var(--accent);line-height:1;}
+.stat-l{font-family:var(--font-m);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--textM);margin-top:3px;}
+
+.ind-block{border-top:1px solid var(--border);padding-top:14px;}
+.ind-label{font-family:var(--font-m);font-size:9px;text-transform:uppercase;letter-spacing:.10em;color:var(--textM);margin-bottom:8px;}
+.ind-chips{display:flex;flex-wrap:wrap;gap:5px;}
+.ind-chip{font-family:var(--font-m);font-size:10px;padding:3px 10px;border:1px solid var(--border);border-radius:100px;color:var(--textM);background:var(--surface2);}
+
+/* SECTION HEADER */
+.sec-label{font-family:var(--font-m);font-size:11px;color:var(--accentT);text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:'';width:20px;height:2px;background:var(--accentT);border-radius:2px;}
+h2{font-family:var(--font-d);font-size:clamp(26px,3.5vw,40px);font-weight:800;color:var(--text);line-height:1.1;letter-spacing:-.025em;margin-bottom:40px;}
+
+/* ACCENT BAR TOP */
+.accent-bar{height:3px;background:linear-gradient(90deg,var(--accent) 55%,var(--accentT) 55%);position:fixed;top:0;left:0;right:0;z-index:300;}
+
+/* ── DASHBOARD SECTION ── */
+#dashboard{padding:100px 0;border-top:1px solid var(--border);background:var(--surface);}
+
+.dash-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:56px;}
+.dash-text p{font-size:16px;color:var(--textD);line-height:1.8;margin-bottom:16px;font-weight:300;}
+.dash-text p strong{color:var(--text);font-weight:500;}
+
+/* KPI ROW */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;}
+.kpi{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:24px 20px;position:relative;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.kpi:hover{border-color:var(--borderH);box-shadow:var(--shadow);}
+.kpi::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--accent);border-radius:0 0 2px 2px;transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
+.kpi:hover::before{transform:scaleX(1);}
+.kpi.teal::before{background:var(--accentT);}
+.kpi-val{font-family:var(--font-d);font-size:36px;font-weight:800;color:var(--accent);line-height:1;margin-bottom:4px;}
+.kpi.teal .kpi-val{color:var(--accentT);}
+.kpi-label{font-family:var(--font-m);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--textM);}
+.kpi-sub{font-size:12px;color:var(--textD);margin-top:8px;font-weight:300;}
+
+/* CHART GRID */
+.chart-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:40px;}
+.chart-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:24px;}
+.chart-title{font-family:var(--font-d);font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.chart-sub{font-family:var(--font-m);font-size:10px;color:var(--textM);text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px;}
+
+/* BAR CHART */
+.bar-chart{display:flex;flex-direction:column;gap:10px;}
+.bar-row{display:flex;align-items:center;gap:10px;}
+.bar-name{font-family:var(--font-m);font-size:10px;color:var(--textM);width:80px;flex-shrink:0;text-align:right;}
+.bar-track{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:3px;background:var(--accent);transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+.bar-fill.teal{background:var(--accentT);}
+.bar-pct{font-family:var(--font-m);font-size:10px;color:var(--textM);width:28px;}
+
+/* DONUT CHART */
+.donut-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
+.donut-svg{overflow:visible;}
+.donut-legend{display:flex;flex-direction:column;gap:8px;width:100%;}
+.legend-row{display:flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:10px;color:var(--textM);}
+.legend-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+
+/* TIMELINE MINI */
+.timeline-mini{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:flex;gap:12px;padding-bottom:16px;position:relative;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-left{display:flex;flex-direction:column;align-items:center;gap:0;}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:3px;box-shadow:0 0 0 3px var(--accentDim);}
+.tl-dot.teal{background:var(--accentT);box-shadow:0 0 0 3px var(--tealDim);}
+.tl-line{width:1px;flex:1;background:var(--border);margin-top:4px;}
+.tl-item:last-child .tl-line{display:none;}
+.tl-content{}
+.tl-year{font-family:var(--font-m);font-size:9px;color:var(--accentT);letter-spacing:.06em;margin-bottom:2px;}
+.tl-role{font-family:var(--font-d);font-size:12px;font-weight:700;color:var(--text);}
+.tl-co{font-size:11px;color:var(--textM);font-weight:300;}
+
+/* WIDE CHART — INDUSTRIES */
+.wide-chart{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:24px;}
+.ind-bar-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;align-items:end;height:120px;margin-bottom:12px;}
+.ind-col{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.ind-bar-wrap{flex:1;display:flex;align-items:flex-end;width:100%;}
+.ind-bar{width:100%;border-radius:4px 4px 0 0;background:var(--accent);transition:height 1.2s cubic-bezier(.4,0,.2,1);position:relative;}
+.ind-bar.teal{background:var(--accentT);}
+.ind-bar-label{font-family:var(--font-m);font-size:9px;color:var(--textM);text-align:center;line-height:1.3;}
+
+/* ── PROJECTS SECTION ── */
+#projects{padding:100px 0;border-top:1px solid var(--border);}
+.proj-tabs{display:flex;gap:8px;margin-bottom:32px;}
+.proj-tab{font-family:var(--font-m);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:7px 18px;border-radius:100px;border:1px solid var(--borderH);cursor:pointer;color:var(--textM);background:transparent;transition:all .2s;}
+.proj-tab.active,.proj-tab:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+.proj-tab.teal.active,.proj-tab.teal:hover{background:var(--accentT);border-color:var(--accentT);}
+
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.proj-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color .2s,box-shadow .2s;display:flex;flex-direction:column;gap:12px;}
+.proj-card:hover{border-color:var(--borderH);box-shadow:var(--shadow);}
+
+.proj-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.proj-type{font-family:var(--font-m);font-size:9px;letter-spacing:.10em;text-transform:uppercase;padding:3px 9px;border-radius:100px;}
+.proj-type.own{background:var(--accentDim);color:var(--accent);border:1px solid var(--borderH);}
+.proj-type.case{background:var(--tealDim);color:var(--accentT);border:1px solid rgba(12,138,122,0.25);}
+
+.proj-icon{font-size:22px;}
+.proj-title{font-family:var(--font-d);font-size:16px;font-weight:700;color:var(--text);}
+.proj-desc{font-size:13px;color:var(--textD);line-height:1.6;font-weight:300;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;}
+.proj-tag{font-family:var(--font-m);font-size:9px;padding:2px 8px;border-radius:100px;background:var(--surface2);border:1px solid var(--border);color:var(--textM);}
+.proj-link{font-family:var(--font-m);font-size:11px;color:var(--accentT);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-top:4px;}
+.proj-link:hover{text-decoration:underline;}
+
+/* ── CONTACT ── */
+#contact{padding:100px 0;border-top:1px solid var(--border);background:var(--surface);}
+.contact-inner{max-width:580px;}
+.contact-sub{font-size:16px;color:var(--textD);line-height:1.75;font-weight:300;margin-bottom:36px;}
+.contact-links{display:flex;flex-direction:column;gap:10px;}
+.contact-link{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:border-color .2s,box-shadow .2s;}
+.contact-link:hover{border-color:var(--accentT);box-shadow:0 4px 16px var(--tealDim);}
+.cl-left{display:flex;align-items:center;gap:14px;}
+.cl-icon{font-size:16px;}
+.cl-label{font-family:var(--font-d);font-weight:700;font-size:13px;color:var(--text);}
+.cl-val{font-family:var(--font-m);font-size:11px;color:var(--textM);}
+.cl-arr{color:var(--textM);transition:color .2s,transform .2s;font-size:14px;}
+.contact-link:hover .cl-arr{color:var(--accentT);transform:translateX(4px);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;background:var(--bg2);}
+.f-logo{font-family:var(--font-d);font-weight:800;font-size:16px;letter-spacing:-.02em;}
+.f-logo .cm{color:var(--accent);}
+.f-logo .dev{color:var(--textM);font-weight:400;}
+.f-copy{font-family:var(--font-m);font-size:11px;color:var(--textM);}
+.f-cv{font-family:var(--font-m);font-size:11px;color:var(--accentT);text-decoration:none;}
+.f-cv:hover{text-decoration:underline;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* GLOW BLOB */
+.blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .container{padding:0 20px;}
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .dash-intro{grid-template-columns:1fr;}
+  .kpi-row{grid-template-columns:1fr 1fr;}
+  .chart-grid{grid-template-columns:1fr;}
+  .proj-grid{grid-template-columns:1fr;}
+  footer{padding:20px;flex-direction:column;gap:8px;text-align:center;}
+}
+@media(max-width:600px){
+  .kpi-row{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="accent-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo"><span class="cm">CM</span><span class="dev">Dev</span></a>
+  <ul class="nav-links">
+    <li><a href="#dashboard">Dashboard</a></li>
+    <li><a href="#projects">Proyectos</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="cv.html" class="cv-link">Ver CV →</a>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <a href="#contact" class="nav-links a nav-cta" style="font-family:var(--font-m);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--accent);padding:8px 18px;border-radius:6px;text-decoration:none;">Conversemos</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="blob" style="width:500px;height:500px;background:rgba(40,15,92,0.07);top:-100px;right:-120px;"></div>
+  <div class="blob" style="width:300px;height:300px;background:rgba(12,138,122,0.07);bottom:5%;left:-80px;"></div>
+
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <div class="eyebrow-dot"></div>
+          Senior Data Consultant · Santiago, Chile
+        </div>
+        <h1>Del dato<br/>a la <em>decisión</em><br/>que <span class="teal">mueve</span> negocios.</h1>
+        <p class="hero-sub">
+          Traduzco problemas de negocio en soluciones de datos —
+          desde la arquitectura hasta el dashboard ejecutivo.
+          <strong>Con visión comercial, rigor técnico y trabajo en equipo.</strong>
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-p">Hablemos →</a>
+          <a href="#dashboard" class="btn-g">Ver mi trabajo ↓</a>
+        </div>
+        <div class="hero-tags">
+          <span class="htag">AWS</span>
+          <span class="htag">Power BI</span>
+          <span class="htag">Python</span>
+          <span class="htag">BigQuery</span>
+          <span class="htag">Dagster</span>
+          <span class="htag">Salesforce MC</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="stat-grid">
+          <div class="stat"><div class="stat-n" id="s1">0</div><div class="stat-l">Años exp.</div></div>
+          <div class="stat"><div class="stat-n" id="s2">0</div><div class="stat-l">Clientes</div></div>
+          <div class="stat"><div class="stat-n" id="s3">0</div><div class="stat-l">Nubes</div></div>
+          <div class="stat"><div class="stat-n" id="s4">0</div><div class="stat-l">Certs.</div></div>
+        </div>
+        <div class="ind-block">
+          <div class="ind-label">Industrias atendidas</div>
+          <div class="ind-chips">
+            <span class="ind-chip">Banca</span>
+            <span class="ind-chip">Minería</span>
+            <span class="ind-chip">Retail</span>
+            <span class="ind-chip">Logística</span>
+            <span class="ind-chip">Energía</span>
+            <span class="ind-chip">Consumo masivo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard">
+  <div class="container">
+    <div class="sec-label">Mi trayectoria · en datos</div>
+    <h2>Un consultor que entiende<br/>los datos — y los muestra así.</h2>
+
+    <div class="dash-intro">
+      <div class="dash-text reveal">
+        <p>
+          Trabajo con organizaciones que tienen datos y aún no los usan para tomar mejores decisiones.
+          Mi rol es cerrar esa brecha: entender el problema real, diseñar la solución correcta
+          y acompañar su implementación hasta que <strong>genere valor visible.</strong>
+        </p>
+        <p>
+          He trabajado en el ciclo completo — desde la fuente de datos hasta el reporte ejecutivo —
+          en equipos multidisciplinarios, en industrias muy distintas, siempre siendo el punto de
+          conexión entre el mundo técnico y la alta dirección.
+        </p>
+      </div>
+      <div class="timeline-mini reveal" style="transition-delay:.15s">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-content"><div class="tl-year">2025 — ACTUAL</div><div class="tl-role">Senior Consultant AI & Data</div><div class="tl-co">Consultoría Big 4 · Financial Services</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot teal"></div><div class="tl-line"></div></div>
+          <div class="tl-content"><div class="tl-year">2024 — 2025</div><div class="tl-role">Senior Consultant Digital Transformation</div><div class="tl-co">Consultoría Big 4 · Advisory</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-content"><div class="tl-year">2023 — 2024</div><div class="tl-role">Senior BI Consultant & Project Leader</div><div class="tl-co">Consultoría de datos · Pyme</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot teal"></div><div class="tl-line"></div></div>
+          <div class="tl-content"><div class="tl-year">2022 — 2023</div><div class="tl-role">Junior BI Developer</div><div class="tl-co">Primer empleo · Consultoría</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpi-row reveal">
+      <div class="kpi">
+        <div class="kpi-val" data-target="3" data-suffix="+">0+</div>
+        <div class="kpi-label">Años de experiencia</div>
+        <div class="kpi-sub">En consultoría de datos enterprise</div>
+      </div>
+      <div class="kpi teal">
+        <div class="kpi-val" data-target="17" data-suffix="+">0+</div>
+        <div class="kpi-label">Clientes atendidos</div>
+        <div class="kpi-sub">Desde pymes hasta grandes corporativos</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val" data-target="3" data-suffix="">0</div>
+        <div class="kpi-label">Nubes dominadas</div>
+        <div class="kpi-sub">Azure · AWS · Google Cloud</div>
+      </div>
+      <div class="kpi teal">
+        <div class="kpi-val" data-target="6" data-suffix="">0</div>
+        <div class="kpi-label">Certificaciones</div>
+        <div class="kpi-sub">Microsoft · Databricks · Securiti</div>
+      </div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="chart-grid reveal" style="transition-delay:.1s">
+
+      <!-- STACK DOMINANCE -->
+      <div class="chart-card">
+        <div class="chart-title">Stack tecnológico</div>
+        <div class="chart-sub">Nivel de dominio por herramienta</div>
+        <div class="bar-chart">
+          <div class="bar-row"><span class="bar-name">Power BI</span><div class="bar-track"><div class="bar-fill" data-w="95" style="width:0%"></div></div><span class="bar-pct">95%</span></div>
+          <div class="bar-row"><span class="bar-name">SQL / T-SQL</span><div class="bar-track"><div class="bar-fill" data-w="92" style="width:0%"></div></div><span class="bar-pct">92%</span></div>
+          <div class="bar-row"><span class="bar-name">Python</span><div class="bar-track"><div class="bar-fill teal" data-w="80" style="width:0%"></div></div><span class="bar-pct">80%</span></div>
+          <div class="bar-row"><span class="bar-name">AWS</span><div class="bar-track"><div class="bar-fill teal" data-w="78" style="width:0%"></div></div><span class="bar-pct">78%</span></div>
+          <div class="bar-row"><span class="bar-name">BigQuery</span><div class="bar-track"><div class="bar-fill" data-w="82" style="width:0%"></div></div><span class="bar-pct">82%</span></div>
+          <div class="bar-row"><span class="bar-name">Dagster</span><div class="bar-track"><div class="bar-fill teal" data-w="70" style="width:0%"></div></div><span class="bar-pct">70%</span></div>
+        </div>
+      </div>
+
+      <!-- ROLE DISTRIBUTION (donut) -->
+      <div class="chart-card">
+        <div class="chart-title">Distribución de roles</div>
+        <div class="chart-sub">En proyectos de carrera</div>
+        <div class="donut-wrap">
+          <svg class="donut-svg" width="120" height="120" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="44" fill="none" stroke-width="16" stroke="var(--border)" />
+            <circle cx="60" cy="60" r="44" fill="none" stroke-width="16" stroke="var(--accent)"
+              stroke-dasharray="0 276.5" stroke-dashoffset="69.1"
+              style="transition:stroke-dasharray 1.4s cubic-bezier(.4,0,.2,1)"
+              data-dash="110.6" class="donut-arc" id="arc1"/>
+            <circle cx="60" cy="60" r="44" fill="none" stroke-width="16" stroke="var(--accentT)"
+              stroke-dasharray="0 276.5" stroke-dashoffset="-41.5"
+              style="transition:stroke-dasharray 1.4s cubic-bezier(.4,0,.2,1) .2s"
+              data-dash="82.95" class="donut-arc" id="arc2"/>
+            <circle cx="60" cy="60" r="44" fill="none" stroke-width="16" stroke="var(--textM)"
+              stroke-dasharray="0 276.5" stroke-dashoffset="-124.45"
+              style="transition:stroke-dasharray 1.4s cubic-bezier(.4,0,.2,1) .4s"
+              data-dash="82.95" class="donut-arc" id="arc3"/>
+            <text x="60" y="56" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="18" fill="var(--accent)">3</text>
+            <text x="60" y="70" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="var(--textM)">roles</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="legend-row"><div class="legend-dot" style="background:var(--accent)"></div><span>Liderazgo de proyecto (40%)</span></div>
+            <div class="legend-row"><div class="legend-dot" style="background:var(--accentT)"></div><span>Ejecución técnica (30%)</span></div>
+            <div class="legend-row"><div class="legend-dot" style="background:var(--textM)"></div><span>Consultoría estratégica (30%)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AREAS SERVED -->
+      <div class="chart-card">
+        <div class="chart-title">Áreas de negocio</div>
+        <div class="chart-sub">Impactadas con soluciones de datos</div>
+        <div class="bar-chart">
+          <div class="bar-row"><span class="bar-name">Marketing</span><div class="bar-track"><div class="bar-fill teal" data-w="90" style="width:0%"></div></div><span class="bar-pct">↑</span></div>
+          <div class="bar-row"><span class="bar-name">Finanzas</span><div class="bar-track"><div class="bar-fill" data-w="85" style="width:0%"></div></div><span class="bar-pct">↑</span></div>
+          <div class="bar-row"><span class="bar-name">Operaciones</span><div class="bar-track"><div class="bar-fill" data-w="80" style="width:0%"></div></div><span class="bar-pct">↑</span></div>
+          <div class="bar-row"><span class="bar-name">Alta dir.</span><div class="bar-track"><div class="bar-fill teal" data-w="88" style="width:0%"></div></div><span class="bar-pct">↑</span></div>
+          <div class="bar-row"><span class="bar-name">TI / GRC</span><div class="bar-track"><div class="bar-fill" data-w="75" style="width:0%"></div></div><span class="bar-pct">↑</span></div>
+          <div class="bar-row"><span class="bar-name">RRHH</span><div class="bar-track"><div class="bar-fill teal" data-w="60" style="width:0%"></div></div><span class="bar-pct">↑</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INDUSTRY BAR CHART -->
+    <div class="wide-chart reveal" style="transition-delay:.2s">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;">
+        <div>
+          <div class="chart-title">Industrias atendidas</div>
+          <div class="chart-sub">Proyectos por sector</div>
+        </div>
+        <div style="font-family:var(--font-m);font-size:10px;color:var(--textM);">· morado = proyectos &nbsp; · teal = industrias activas</div>
+      </div>
+      <div class="ind-bar-grid" id="industryChart">
+        <div class="ind-col">
+          <div class="ind-bar-wrap"><div class="ind-bar" data-h="85" style="height:0;background:var(--accent)"></div></div>
+          <div class="ind-bar-label">Banca &<br/>Finanzas</div>
+        </div>
+        <div class="ind-col">
+          <div class="ind-bar-wrap"><div class="ind-bar teal" data-h="72" style="height:0"></div></div>
+          <div class="ind-bar-label">Minería &<br/>Energía</div>
+        </div>
+        <div class="ind-col">
+          <div class="ind-bar-wrap"><div class="ind-bar" data-h="60" style="height:0;background:var(--accent)"></div></div>
+          <div class="ind-bar-label">Retail &<br/>FMCG</div>
+        </div>
+        <div class="ind-col">
+          <div class="ind-bar-wrap"><div class="ind-bar teal" data-h="45" style="height:0"></div></div>
+          <div class="ind-bar-label">Logística &<br/>Transporte</div>
+        </div>
+        <div class="ind-col">
+          <div class="ind-bar-wrap"><div class="ind-bar" data-h="38" style="height:0;background:var(--accent)"></div></div>
+          <div class="ind-bar-label">Manufactura</div>
+        </div>
+        <div class="ind-col">
+          <div class="ind-bar-wrap"><div class="ind-bar teal" data-h="30" style="height:0"></div></div>
+          <div class="ind-bar-label">Agroindustria</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-label">Proyectos</div>
+    <h2>Lo que construyo<br/>fuera del trabajo.</h2>
+
+    <div class="proj-tabs">
+      <button class="proj-tab active" onclick="filterProj('all',this)">Todos</button>
+      <button class="proj-tab" onclick="filterProj('own',this)">Proyectos propios</button>
+      <button class="proj-tab teal" onclick="filterProj('case',this)">Casos de negocio</button>
+    </div>
+
+    <div class="proj-grid" id="projGrid">
+
+      <div class="proj-card reveal" data-type="own">
+        <div class="proj-header">
+          <span class="proj-icon">📊</span>
+          <span class="proj-type own">Proyecto propio</span>
+        </div>
+        <div class="proj-title">Dashboard de Indicadores Económicos CL</div>
+        <div class="proj-desc">Pipeline de datos que consume APIs del Banco Central de Chile y construye un dashboard ejecutivo con Power BI y Python. Actualización automática diaria.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Power BI</span>
+          <span class="proj-tag">API REST</span>
+          <span class="proj-tag">Pandas</span>
+        </div>
+        <a href="https://github.com/Peppa-Coder" target="_blank" class="proj-link">Ver en GitHub →</a>
+      </div>
+
+      <div class="proj-card reveal" data-type="own" style="transition-delay:.1s">
+        <div class="proj-header">
+          <span class="proj-icon">🔄</span>
+          <span class="proj-type own">Proyecto propio</span>
+        </div>
+        <div class="proj-title">ETL Pipeline con Dagster + BigQuery</div>
+        <div class="proj-desc">Pipeline orquestado con Dagster que extrae datos de múltiples fuentes, los transforma con dbt y los carga en BigQuery. Incluye alertas y linaje de datos.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Dagster</span>
+          <span class="proj-tag">BigQuery</span>
+          <span class="proj-tag">dbt</span>
+          <span class="proj-tag">Python</span>
+        </div>
+        <a href="https://github.com/Peppa-Coder" target="_blank" class="proj-link">Ver en GitHub →</a>
+      </div>
+
+      <div class="proj-card reveal" data-type="own" style="transition-delay:.2s">
+        <div class="proj-header">
+          <span class="proj-icon">🤖</span>
+          <span class="proj-type own">Proyecto propio</span>
+        </div>
+        <div class="proj-title">Análisis Predictivo con ML — Churn</div>
+        <div class="proj-desc">Modelo de clasificación para predecir churn de clientes en retail. Comparación de Random Forest, XGBoost y LightGBM con dataset sintético público.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Scikit-learn</span>
+          <span class="proj-tag">XGBoost</span>
+          <span class="proj-tag">Pandas</span>
+        </div>
+        <a href="https://github.com/Peppa-Coder" target="_blank" class="proj-link">Ver en GitHub →</a>
+      </div>
+
+      <div class="proj-card reveal" data-type="case">
+        <div class="proj-header">
+          <span class="proj-icon">🏦</span>
+          <span class="proj-type case">Caso de negocio</span>
+        </div>
+        <div class="proj-title">Optimización de Campañas — Banca</div>
+        <div class="proj-desc">Modelado predictivo de propensión de clientes para campañas de marketing. Análisis pre/post campaña con grupos de control. Reducción de costo por conversión en ~30%.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">AWS Athena</span>
+          <span class="proj-tag">Salesforce MC</span>
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">SQL</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-type="case" style="transition-delay:.1s">
+        <div class="proj-header">
+          <span class="proj-icon">⛏️</span>
+          <span class="proj-type case">Caso de negocio</span>
+        </div>
+        <div class="proj-title">Data Warehouse — Industria Minera</div>
+        <div class="proj-desc">Diseño e implementación de DWH para consolidar datos de operaciones, mantenimiento y costos. Arquitectura medallion en BigQuery. Dashboards para alta dirección.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">BigQuery</span>
+          <span class="proj-tag">Dagster</span>
+          <span class="proj-tag">Power BI</span>
+          <span class="proj-tag">ETL</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-type="case" style="transition-delay:.2s">
+        <div class="proj-header">
+          <span class="proj-icon">🛡️</span>
+          <span class="proj-type case">Caso de negocio</span>
+        </div>
+        <div class="proj-title">Auditoría de IA & Gobernanza de Datos</div>
+        <div class="proj-desc">Evaluación de madurez en gobernanza de datos y uso de IA para cliente del sector servicios. Recomendaciones de mejora, políticas y hoja de ruta de implementación.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Data Governance</span>
+          <span class="proj-tag">AI Audit</span>
+          <span class="proj-tag">GRC</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="sec-label">Contacto</div>
+      <h2>¿Tienes un desafío<br/>de datos?</h2>
+      <p class="contact-sub">
+        Si tienes un problema de negocio que involucra datos — ya sea que no los tienes,
+        no los entiendes o no los estás usando bien — conversemos.
+        Sin compromiso, sin jerga innecesaria.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:carlos.s.m.carrasco@gmail.com" class="contact-link">
+          <div class="cl-left"><div class="cl-icon">✉️</div><div><div class="cl-label">Email</div><div class="cl-val">carlos.s.m.carrasco@gmail.com</div></div></div>
+          <div class="cl-arr">→</div>
+        </a>
+        <a href="https://www.linkedin.com/in/carlosmunozc/" target="_blank" class="contact-link">
+          <div class="cl-left"><div class="cl-icon">💼</div><div><div class="cl-label">LinkedIn</div><div class="cl-val">linkedin.com/in/carlosmunozc</div></div></div>
+          <div class="cl-arr">→</div>
+        </a>
+        <a href="https://github.com/Peppa-Coder" target="_blank" class="contact-link">
+          <div class="cl-left"><div class="cl-icon">🐙</div><div><div class="cl-label">GitHub</div><div class="cl-val">github.com/Peppa-Coder</div></div></div>
+          <div class="cl-arr">→</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><span class="cm">CM</span><span class="dev">Dev</span></div>
+  <div class="f-copy">© 2025 Carlos Muñoz Carrasco · Santiago, Chile</div>
+  <a href="cv.html" class="f-cv">Ver CV completo →</a>
+</footer>
+
+<script>
+// THEME
+function toggleTheme(){
+  const html=document.documentElement;
+  const isDark=html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme',isDark?'light':'dark');
+  document.getElementById('themeBtn').textContent=isDark?'🌙':'☀️';
+  localStorage.setItem('theme',isDark?'light':'dark');
+}
+(function(){
+  const t=localStorage.getItem('theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  document.addEventListener('DOMContentLoaded',()=>{
+    document.getElementById('themeBtn').textContent=t==='dark'?'☀️':'🌙';
+  });
+})();
+
+// COUNTER ANIMATION
+function animateCounter(el,target,suffix){
+  let start=0;
+  const dur=1400;
+  const step=timestamp=>{
+    if(!start)start=timestamp;
+    const progress=Math.min((timestamp-start)/dur,1);
+    const val=Math.floor(progress*target);
+    el.textContent=val+suffix;
+    if(progress<1)requestAnimationFrame(step);
+    else el.textContent=target+suffix;
+  };
+  requestAnimationFrame(step);
+}
+
+// SCROLL REVEAL + CHART TRIGGERS
+const reveals=document.querySelectorAll('.reveal');
+const barFills=document.querySelectorAll('.bar-fill');
+const indBars=document.querySelectorAll('.ind-bar');
+const donutArcs=document.querySelectorAll('.donut-arc');
+const kpiVals=document.querySelectorAll('.kpi-val[data-target]');
+const statEls=[
+  {el:document.getElementById('s1'),t:3,s:'+'},
+  {el:document.getElementById('s2'),t:17,s:'+'},
+  {el:document.getElementById('s3'),t:3,s:''},
+  {el:document.getElementById('s4'),t:6,s:''},
+];
+let chartsAnimated=false, statsAnimated=false;
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target;
+    if(el.classList.contains('reveal')){el.classList.add('visible');io.unobserve(el);}
+  });
+},{threshold:0.08});
+reveals.forEach(el=>io.observe(el));
+
+// Hero stats
+const heroCard=document.querySelector('.hero-card');
+const heroIO=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting&&!statsAnimated){
+    statsAnimated=true;
+    statEls.forEach(({el,t,s})=>animateCounter(el,t,s));
+  }
+},{threshold:.3});
+if(heroCard)heroIO.observe(heroCard);
+
+// Charts
+const dashIO=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting&&!chartsAnimated){
+    chartsAnimated=true;
+    setTimeout(()=>{
+      barFills.forEach(b=>{b.style.width=b.dataset.w+'%';});
+      indBars.forEach(b=>{b.style.height=b.dataset.h+'px';});
+      donutArcs.forEach(a=>{
+        const d=parseFloat(a.dataset.dash);
+        a.setAttribute('stroke-dasharray',d+' '+(276.5-d));
+      });
+      kpiVals.forEach(k=>animateCounter(k,parseInt(k.dataset.target),k.dataset.suffix));
+    },200);
+  }
+},{threshold:.1});
+const dash=document.getElementById('dashboard');
+if(dash)dashIO.observe(dash);
+
+// PROJECT FILTER
+function filterProj(type,btn){
+  document.querySelectorAll('.proj-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.proj-card').forEach(c=>{
+    c.style.display=(type==='all'||c.dataset.type===type)?'flex':'none';
+  });
+}
+
+// NAV ACTIVE
+const secs=document.querySelectorAll('section[id]');
+const navAs=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+  navAs.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--accentT)':'';});
+});
+</script>
+</body>
+</html>

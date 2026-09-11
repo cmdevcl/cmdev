@@ -6,7 +6,6 @@ import { projects, type ProjectType } from "@/data/profile";
 
 const FILTERS: { key: ProjectType | "all"; label: string }[] = [
   { key: "all", label: "Todos" },
-  { key: "own", label: "Proyectos propios" },
   { key: "case", label: "Casos de negocio" },
   { key: "platform", label: "Plataforma" },
   { key: "fabrica", label: "Fábrica de informes" },

@@ -8,7 +8,7 @@ export const identity = {
   email: "carlos.s.m.carrasco@gmail.com",
   phone: "+56 9 5730 3196",
   linkedin: "linkedin.com/in/carlosmunozc",
-  github: "github.com/Peppa-Coder",
+  github: "github.com/cmdevcl",
   summary:
     "Consultor Senior en Datos con más de 4 años de experiencia en el diseño y liderazgo de soluciones de inteligencia de negocios, arquitectura, ingeniería, analítica y gobernanza de datos.",
 };
@@ -195,7 +195,7 @@ export const timeline = experience.slice(0, 4).map((e) => ({
   meta: [e.company, e.context].filter(Boolean).join(" · "),
 }));
 
-export type ProjectType = "own" | "case" | "fabrica" | "platform";
+export type ProjectType = "case" | "fabrica" | "platform";
 
 export interface ProjectItem {
   id: string;
@@ -211,39 +211,6 @@ export interface ProjectItem {
 }
 
 export const projects: ProjectItem[] = [
-  {
-    id: "indicadores-cl",
-    type: "own",
-    emoji: "📊",
-    eyebrow: "Proyecto propio",
-    title: "Dashboard de Indicadores Económicos CL",
-    description:
-      "Pipeline de datos que consume APIs del Banco Central de Chile y construye un dashboard ejecutivo con Power BI y Python. Actualización automática diaria.",
-    tags: ["Python", "Power BI", "API REST", "Pandas"],
-    link: "https://github.com/Peppa-Coder",
-  },
-  {
-    id: "etl-dagster",
-    type: "own",
-    emoji: "🔄",
-    eyebrow: "Proyecto propio",
-    title: "ETL Pipeline con Dagster + BigQuery",
-    description:
-      "Pipeline orquestado con Dagster que extrae datos de múltiples fuentes, los transforma con dbt y los carga en BigQuery. Incluye alertas y linaje de datos.",
-    tags: ["Dagster", "BigQuery", "dbt", "Python"],
-    link: "https://github.com/Peppa-Coder",
-  },
-  {
-    id: "churn-ml",
-    type: "own",
-    emoji: "🤖",
-    eyebrow: "Proyecto propio",
-    title: "Análisis Predictivo con ML — Churn",
-    description:
-      "Modelo de clasificación para predecir churn de clientes en retail. Comparación de Random Forest, XGBoost y LightGBM con dataset sintético público.",
-    tags: ["Python", "Scikit-learn", "XGBoost", "Pandas"],
-    link: "https://github.com/Peppa-Coder",
-  },
   {
     id: "campanas-banca",
     type: "case",

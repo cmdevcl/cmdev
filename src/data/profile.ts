@@ -21,10 +21,9 @@ export interface StatItem {
   note?: string;
 }
 
-// TODO Carlos: revisa que "clientes atendidos" siga reflejando la realidad (quedó en 17 desde la versión anterior del sitio).
 export const stats: StatItem[] = [
   { id: "years", label: "Años de experiencia", value: 4, suffix: "+", note: "En consultoría de datos enterprise" },
-  { id: "clients", label: "Clientes atendidos", value: 17, suffix: "+", note: "Desde pymes hasta grandes corporativos" },
+  { id: "clients", label: "Clientes atendidos", value: 18, suffix: "+", note: "Contando las organizaciones nombradas en el CV" },
   { id: "clouds", label: "Nubes dominadas", value: 3, note: "Azure · AWS · Google Cloud" },
   { id: "certs", label: "Certificaciones", value: 7, note: "Microsoft · Databricks · Securiti · Oracle" },
 ];
@@ -54,32 +53,36 @@ export const roleDistribution: RoleShare[] = [
   { label: "Consultoría estratégica", pct: 30 },
 ];
 
-export interface BusinessArea {
-  label: string;
-  impact: number;
-}
-
-export const businessAreas: BusinessArea[] = [
-  { label: "Marketing", impact: 90 },
-  { label: "Finanzas", impact: 85 },
-  { label: "Operaciones", impact: 80 },
-  { label: "Alta dirección", impact: 88 },
-  { label: "TI / GRC", impact: 75 },
-  { label: "RRHH", impact: 60 },
+// Listas simples (sin puntaje inventado) — tal cual figuran en el CV real, sección "Áreas beneficiadas".
+export const businessAreas: string[] = [
+  "Alta Dirección",
+  "Control de Gestión",
+  "Gobierno de Datos",
+  "Desarrollo",
+  "TI",
+  "Ciberseguridad",
+  "GRC",
+  "Operaciones",
+  "Finanzas",
+  "Marketing y Ventas",
+  "Recursos Humanos",
+  "People Analytics",
 ];
 
-export interface IndustryBar {
-  label: string;
-  value: number;
-}
-
-export const industries: IndustryBar[] = [
-  { label: "Banca & Finanzas", value: 85 },
-  { label: "Minería & Energía", value: 72 },
-  { label: "Retail & FMCG", value: 60 },
-  { label: "Logística & Transporte", value: 45 },
-  { label: "Manufactura", value: 38 },
-  { label: "Agroindustria", value: 30 },
+// Tal cual figuran en el CV real, sección "Industrias".
+export const industries: string[] = [
+  "Minería",
+  "Banca",
+  "Medios de pago y servicios financieros",
+  "Energía",
+  "Consumo masivo",
+  "Transporte y aerolíneas",
+  "Educación superior",
+  "Manufactura e industria",
+  "Logística",
+  "Construcción",
+  "Servicios profesionales",
+  "Servicios sociales",
 ];
 
 export const heroTags = ["AWS", "Power BI", "Python", "BigQuery", "Dagster", "Salesforce MC"];
@@ -195,7 +198,7 @@ export const timeline = experience.slice(0, 4).map((e) => ({
   meta: [e.company, e.context].filter(Boolean).join(" · "),
 }));
 
-export type ProjectType = "case" | "fabrica" | "platform";
+export type ProjectType = "case" | "fabrica" | "platform" | "technical";
 
 export interface ProjectItem {
   id: string;
@@ -216,20 +219,10 @@ export const projects: ProjectItem[] = [
     type: "case",
     emoji: "🏦",
     eyebrow: "Caso de negocio",
-    title: "Optimización de Campañas — Banca",
+    title: "Optimización de Campañas — Financial Services",
     description:
-      "Modelado predictivo de propensión de clientes para campañas de marketing. Análisis pre/post campaña con grupos de control. Reducción de costo por conversión en ~30%.",
+      "Análisis pre y post campaña, segmentación y modelos de propensión de clientes para medir efectividad y mejorar decisiones de inversión comercial. Automatización de datasets para Salesforce Marketing Cloud.",
     tags: ["AWS Athena", "Salesforce MC", "Python", "SQL"],
-  },
-  {
-    id: "dwh-mineria",
-    type: "case",
-    emoji: "⛏️",
-    eyebrow: "Caso de negocio",
-    title: "Data Warehouse — Industria Minera",
-    description:
-      "Diseño e implementación de DWH para consolidar datos de operaciones, mantenimiento y costos. Arquitectura medallion en BigQuery. Dashboards para alta dirección.",
-    tags: ["BigQuery", "Dagster", "Power BI", "ETL"],
   },
   {
     id: "auditoria-ia",
@@ -250,6 +243,17 @@ export const projects: ProjectItem[] = [
     description:
       "Plataforma web construida de punta a punta para que empresas publiquen y naveguen sus reportes Power BI por rol y área, con control de acceso por empresa/usuario y portal embebido. Next.js + Supabase + Vercel, arquitectura multi-tenant real.",
     tags: ["Next.js", "Supabase", "Vercel", "Multi-tenant", "Power BI embed"],
+  },
+  {
+    id: "prueba-tecnica-pbi",
+    type: "technical",
+    emoji: "🧪",
+    eyebrow: "Evaluación técnica resuelta",
+    title: "Diagnóstico y fix de un informe Power BI",
+    description:
+      "Prueba técnica de Analista de Datos Power BI: diagnóstico y corrección de tres errores reportados en un informe (filtro de fecha relativa, medida DAX de año anterior, seguridad a nivel de fila del rol de vendedores) y migración de una página a una nueva maqueta visual, sobre un modelo semántico TMDL con Power Query propio.",
+    tags: ["Power BI", "DAX", "Row-Level Security", "Power Query", "TMDL"],
+    link: "https://github.com/cmdevcl/prueba-tecnica-analista-datos-pbi",
   },
   {
     id: "fabrica-educacion",

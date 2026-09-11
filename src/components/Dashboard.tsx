@@ -25,6 +25,22 @@ function ChartCard({ title, children }: { title: string; children: React.ReactNo
   );
 }
 
+function TagList({ items }: { items: string[] }) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {items.map((item) => (
+        <span
+          key={item}
+          className="rounded-full border px-3 py-1.5 text-xs"
+          style={{ borderColor: "var(--border)", color: "var(--textD)" }}
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export function Dashboard() {
   return (
     <section id="dashboard" className="mx-auto max-w-6xl px-6 py-16 md:py-24">
@@ -60,21 +76,21 @@ export function Dashboard() {
         ))}
       </div>
 
-      <div className="mt-8 grid gap-6 md:grid-cols-3">
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
         <ChartCard title="Stack tecnológico · nivel de dominio">
           <BarList items={stackSkills} valueKey="level" />
         </ChartCard>
         <ChartCard title="Distribución de roles en proyectos">
           <RoleDonut data={roleDistribution} />
         </ChartCard>
-        <ChartCard title="Áreas de negocio impactadas">
-          <BarList items={businessAreas} valueKey="impact" />
-        </ChartCard>
       </div>
 
-      <div className="mt-6">
-        <ChartCard title="Industrias atendidas · proyectos por sector">
-          <BarList items={industries} valueKey="value" />
+      <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <ChartCard title="Áreas beneficiadas">
+          <TagList items={businessAreas} />
+        </ChartCard>
+        <ChartCard title="Industrias atendidas">
+          <TagList items={industries} />
         </ChartCard>
       </div>
     </section>

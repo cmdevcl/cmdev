@@ -9,6 +9,7 @@ const FILTERS: { key: ProjectType | "all"; label: string }[] = [
   { key: "case", label: "Casos de negocio" },
   { key: "platform", label: "Plataforma" },
   { key: "fabrica", label: "Fábrica de informes" },
+  { key: "technical", label: "Evaluaciones técnicas" },
 ];
 
 export function ProjectsSection() {

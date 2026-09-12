@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { projects, type ProjectType } from "@/data/profile";
+import { glassStyle } from "@/lib/glass";
 
 const FILTERS: { key: ProjectType | "all"; label: string }[] = [
   { key: "all", label: "Todos" },
@@ -49,7 +50,7 @@ export function ProjectsSection() {
           <div
             key={p.id}
             className="flex flex-col overflow-hidden rounded-2xl border"
-            style={{ borderColor: "var(--border)", background: "var(--surface)" }}
+            style={{ borderColor: "var(--border)", background: "var(--surface)", ...glassStyle }}
           >
             {p.image ? (
               <div className="relative h-40 w-full">

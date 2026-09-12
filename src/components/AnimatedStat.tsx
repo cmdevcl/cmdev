@@ -2,6 +2,7 @@
 
 import { useCountUp } from "@/hooks/useCountUp";
 import type { StatItem } from "@/data/profile";
+import { glassStyle } from "@/lib/glass";
 
 export function AnimatedStat({ stat, compact = false }: { stat: StatItem; compact?: boolean }) {
   const { ref, value } = useCountUp(stat.value);
@@ -10,7 +11,7 @@ export function AnimatedStat({ stat, compact = false }: { stat: StatItem; compac
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
       className={compact ? "text-center" : "rounded-2xl border p-5"}
-      style={compact ? undefined : { borderColor: "var(--border)", background: "var(--surface)" }}
+      style={compact ? undefined : { borderColor: "var(--border)", background: "var(--surface)", ...glassStyle }}
     >
       <div className="font-display text-3xl font-extrabold" style={{ color: "var(--accent)" }}>
         {value}

@@ -50,8 +50,8 @@ export default function CvPage() {
           <Link
             href="/cv/CV_Carlos_Munoz_Carrasco_2026_ES.pdf"
             prefetch={false}
-            className="font-mono mt-6 inline-block rounded-full px-6 py-3 text-xs uppercase tracking-wider text-white"
-            style={{ background: "var(--accent)" }}
+            className="font-mono mt-6 inline-block rounded-full px-6 py-3 text-xs uppercase tracking-wider"
+            style={{ background: "var(--accent)", color: "var(--bg)" }}
           >
             Descargar CV en PDF →
           </Link>

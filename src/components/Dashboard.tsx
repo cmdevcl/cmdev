@@ -2,6 +2,8 @@ import { stats, stackSkills, roleDistribution, businessAreas, industries, timeli
 import { AnimatedStat } from "@/components/AnimatedStat";
 import { BarList } from "@/components/BarList";
 import { RoleDonut } from "@/components/RoleDonut";
+import { glassStyle } from "@/lib/glass";
+import { Glow } from "@/components/Glow";
 
 function SectionLabel({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
@@ -16,7 +18,7 @@ function SectionLabel({ eyebrow, title }: { eyebrow: string; title: string }) {
 
 function ChartCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border p-6" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+    <div className="rounded-2xl border p-6" style={{ borderColor: "var(--border)", background: "var(--surface)", ...glassStyle }}>
       <div className="font-mono mb-4 text-[11px] uppercase tracking-wider" style={{ color: "var(--textM)" }}>
         {title}
       </div>
@@ -43,7 +45,8 @@ function TagList({ items }: { items: string[] }) {
 
 export function Dashboard() {
   return (
-    <section id="dashboard" className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+    <section id="dashboard" className="relative mx-auto max-w-6xl px-6 py-16 md:py-24">
+      <Glow style={{ width: 460, height: 460, top: 200, right: -180 }} />
       <SectionLabel eyebrow="Mi trayectoria · en datos" title="Un consultor que entiende los datos — y los muestra así." />
 
       <div className="grid gap-10 md:grid-cols-[1fr_1fr] md:items-start">

@@ -1,4 +1,6 @@
 import { identity } from "@/data/profile";
+import { glassStyle } from "@/lib/glass";
+import { Glow } from "@/components/Glow";
 
 const LINKS = [
   { icon: "✉️", label: "Email", value: identity.email, href: `mailto:${identity.email}` },
@@ -8,7 +10,8 @@ const LINKS = [
 
 export function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+    <section id="contact" className="relative mx-auto max-w-6xl px-6 py-16 md:py-24">
+      <Glow style={{ width: 400, height: 400, bottom: -140, left: "50%", transform: "translateX(-50%)" }} />
       <div className="font-mono text-xs uppercase tracking-wider" style={{ color: "var(--accentT)" }}>
         Contacto
       </div>
@@ -28,7 +31,7 @@ export function Contact() {
             target={l.label === "Email" ? undefined : "_blank"}
             rel="noreferrer"
             className="rounded-2xl border p-5 transition-colors"
-            style={{ borderColor: "var(--border)", background: "var(--surface)" }}
+            style={{ borderColor: "var(--border)", background: "var(--surface)", ...glassStyle }}
           >
             <div className="text-xl">{l.icon}</div>
             <div className="font-mono mt-2 text-[10px] uppercase tracking-wider" style={{ color: "var(--textM)" }}>

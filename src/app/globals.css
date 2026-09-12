@@ -1,41 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f4f5fa;
-  --bg2: #eceef6;
-  --surface: #ffffff;
-  --surface2: #f0f1f8;
-  --border: rgba(35, 10, 80, 0.09);
-  --borderH: rgba(35, 10, 80, 0.2);
-  --accent: #280f5c;
-  --accentL: #3d1a80;
-  --accentT: #0c8a7a;
-  --accentTL: #0fb39e;
-  --accentDim: rgba(40, 15, 92, 0.08);
-  --tealDim: rgba(12, 138, 122, 0.1);
-  --text: #0e0820;
-  --textM: #6e7088;
-  --textD: #2e2050;
-  --shadow: 0 4px 24px rgba(40, 15, 92, 0.08);
+  --bg: #ffffff;
+  --bg2: #f7f7f8;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface2: rgba(0, 0, 0, 0.035);
+  --border: rgba(0, 0, 0, 0.1);
+  --borderH: rgba(0, 0, 0, 0.22);
+  --accent: #0a0a0a;
+  --accentL: #262626;
+  --accentT: #6b6b6b;
+  --accentTL: #8a8a8a;
+  --accentDim: rgba(0, 0, 0, 0.05);
+  --tealDim: rgba(0, 0, 0, 0.04);
+  --text: #0a0a0a;
+  --textM: #737373;
+  --textD: #404040;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --glow: rgba(0, 0, 0, 0.07);
 }
 
 [data-theme="dark"] {
-  --bg: #070a12;
-  --bg2: #0d1120;
-  --surface: #0d1120;
-  --surface2: #141a2c;
-  --border: rgba(120, 90, 255, 0.12);
-  --borderH: rgba(120, 90, 255, 0.28);
-  --accent: #9870f0;
-  --accentL: #b898ff;
-  --accentT: #22c4ae;
-  --accentTL: #5dd8c8;
-  --accentDim: rgba(152, 112, 240, 0.12);
-  --tealDim: rgba(34, 196, 174, 0.1);
-  --text: #e2e8f5;
-  --textM: #6e7080;
-  --textD: #9aaabb;
-  --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --bg: #000000;
+  --bg2: #0a0a0a;
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface2: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.12);
+  --borderH: rgba(255, 255, 255, 0.26);
+  --accent: #ffffff;
+  --accentL: #d4d4d4;
+  --accentT: #a3a3a3;
+  --accentTL: #c2c2c2;
+  --accentDim: rgba(255, 255, 255, 0.08);
+  --tealDim: rgba(255, 255, 255, 0.05);
+  --text: #ffffff;
+  --textM: #a3a3a3;
+  --textD: #d4d4d4;
+  --shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  --glow: rgba(255, 255, 255, 0.12);
 }
 
 @theme inline {

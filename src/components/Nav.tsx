@@ -4,8 +4,13 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 export function Nav() {
   return (
     <header
-      className="sticky top-0 z-40 border-b backdrop-blur"
-      style={{ borderColor: "var(--border)", background: "color-mix(in srgb, var(--bg) 85%, transparent)" }}
+      className="sticky top-0 z-40 border-b"
+      style={{
+        borderColor: "var(--border)",
+        background: "color-mix(in srgb, var(--bg) 75%, transparent)",
+        backdropFilter: "blur(14px) saturate(160%)",
+        WebkitBackdropFilter: "blur(14px) saturate(160%)",
+      }}
     >
       <div className="h-[3px] w-full" style={{ background: "linear-gradient(90deg, var(--accent), var(--accentT))" }} />
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">

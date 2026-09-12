@@ -1,10 +1,14 @@
 import Link from "next/link";
 import { identity, stats, heroTags } from "@/data/profile";
 import { AnimatedStat } from "@/components/AnimatedStat";
+import { Glow } from "@/components/Glow";
+import { glassStyle } from "@/lib/glass";
 
 export function Hero() {
   return (
-    <section id="hero" className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+    <section id="hero" className="relative mx-auto max-w-6xl px-6 py-16 md:py-24">
+      <Glow style={{ width: 520, height: 520, top: -120, left: -160 }} />
+      <Glow style={{ width: 420, height: 420, top: 60, right: -140 }} />
       <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:items-center">
         <div>
           <div
@@ -28,8 +32,8 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/#contact"
-              className="font-mono rounded-full px-6 py-3 text-xs uppercase tracking-wider text-white"
-              style={{ background: "var(--accent)" }}
+              className="font-mono rounded-full px-6 py-3 text-xs uppercase tracking-wider"
+              style={{ background: "var(--accent)", color: "var(--bg)" }}
             >
               Hablemos →
             </Link>
@@ -49,8 +53,8 @@ export function Hero() {
         </div>
 
         <div
-          className="rounded-3xl border p-6"
-          style={{ borderColor: "var(--border)", background: "var(--surface)", boxShadow: "var(--shadow)" }}
+          className="relative rounded-3xl border p-6"
+          style={{ borderColor: "var(--border)", background: "var(--surface)", boxShadow: "var(--shadow)", ...glassStyle }}
         >
           <div className="grid grid-cols-2 gap-4">
             {stats.map((s) => (

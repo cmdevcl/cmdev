@@ -39,3 +39,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# estándar D-0018
+!.env.example
+dist/
+*.log
+.claude/worktrees/
+.claude/settings.local.json
+CLAUDE.local.md
+outputs/
+capturas/
+test-results/
+playwright-report/
+tmp/
+.codex*/
+*.zip

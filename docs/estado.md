@@ -8,7 +8,7 @@
 
 1. Arreglar los 2 errores de lint previos: `src/components/RoleDonut.tsx` y `src/components/ThemeToggle.tsx`.
 2. Completar `docs/producto.md` (meta con métrica, mensaje del CEO, HEART).
-3. Revisar la rama `fix/seguridad-next` y su worktree: ya integrada vía PR #1, se puede limpiar.
+3. Borrar la rama remota `fix/seguridad-next`: su árbol es idéntico al de `main` (PR #1) y ya no tiene worktree.
 4. Alinear `node-version` de `deploy.yml` (22) con `.nvmrc` (24).
 
 ## Brechas

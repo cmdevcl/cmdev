@@ -40,7 +40,7 @@ This block is written and re-added by `next dev`, verify at `node_modules/next/d
 | Entender qué se construye y para quién | `docs/producto.md` |
 | Ver lo que está en curso o pendiente | `docs/estado.md` |
 | Cambiar algo ya decidido | `docs/decisiones/INDEX.md` |
-| Hacer una feature de 3 o más archivos | `docs/specs/` (la spec va antes del código) |
+| Hacer una feature de 3 o más archivos | `docs/specs/` cuando exista (la spec va antes del código) |
 
 ## Límites
 

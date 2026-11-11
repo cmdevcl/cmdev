@@ -1,5 +1,7 @@
 # cmdev
 
+Capa de la raíz: lee `C:\Personal\AGENTS.md` antes de seguir si tu herramienta no la cargó.
+
 Portafolio y CV web de Carlos Muñoz Carrasco (Senior Data Consultant), para reclutadores y clientes. Se publica en GitHub Pages desde `main`. Detalle en `docs/producto.md`.
 
 ## Comandos
